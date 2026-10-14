@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LI - 个人主页</title>
   <meta name="description" content="个人主页，展示简介、项目和联系方式。" />
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="LI - 个人主页" />
+  <meta property="og:description" content="展示简介、作品与联系方式。" />
+  <meta property="og:image" content="/preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,7 +24,7 @@
     </nav>
 
     <div class="brand">
-      <img class="avatar" src="preview.jpg" alt="头像">
+      <img class="avatar" src="preview.jpg" alt="头像" width="72" height="72">
       <div>
         <h1 id="your-name">LI</h1>
         <p class="subtitle">职业 · 爱好 · 简短介绍</p>
@@ -44,29 +50,29 @@
       <h3>作品集</h3>
       <div class="portfolio-grid">
         <article class="portfolio-item">
-          <img src="preview.jpg" alt="游戏截图">
+          <img src="preview.jpg" srcset="/preview.jpg 600w, /preview.jpg 1200w" sizes="(max-width:600px) 100vw, 33vw" loading="lazy" alt="游戏截图">
           <div class="meta">
             <h4>游戏截图</h4>
             <p>精选游戏画面展示，包含高光时刻与视觉效果演示。</p>
-            <a href="preview.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看 游戏截图">查看详情</a>
+            <a href="preview.jpg" class="view-link" data-full="/preview.jpg" aria-label="查看 游戏截图">查看详情</a>
           </div>
         </article>
 
         <article class="portfolio-item">
-          <img src="preview.jpg" alt="生活照">
+          <img src="preview.jpg" srcset="/preview.jpg 600w, /preview.jpg 1200w" sizes="(max-width:600px) 100vw, 33vw" loading="lazy" alt="生活照">
           <div class="meta">
             <h4>生活照</h4>
             <p>个人生活与旅行片段的精选摄影，记录真实瞬间。</p>
-            <a href="preview.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看 生活照">查看详情</a>
+            <a href="preview.jpg" class="view-link" data-full="/preview.jpg" aria-label="查看 生活照">查看详情</a>
           </div>
         </article>
 
         <article class="portfolio-item">
-          <img src="preview.jpg" alt="AI作品">
+          <img src="preview.jpg" srcset="/preview.jpg 600w, /preview.jpg 1200w" sizes="(max-width:600px) 100vw, 33vw" loading="lazy" alt="AI作品">
           <div class="meta">
             <h4>AI作品</h4>
             <p>基于 AI 的创意实验与生成作品，包含图像与文本示例。</p>
-            <a href="preview.jpg" target="_blank" rel="noopener noreferrer" aria-label="查看 AI作品">查看详情</a>
+            <a href="preview.jpg" class="view-link" data-full="/preview.jpg" aria-label="查看 AI作品">查看详情</a>
           </div>
         </article>
       </div>
@@ -82,6 +88,13 @@
   <footer class="site-footer">
     <p>© <span id="year"></span> LI · 使用 GitHub Pages 或其他静态托管部署</p>
   </footer>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox-close" aria-label="关闭">×</button>
+    <img class="lightbox-img" alt="" src="" />
+    <p class="lightbox-caption"></p>
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -132,6 +145,39 @@
         if (saved.startsWith('data:')) setBgFromDataUrl(saved);
         else setBgFromUrl(saved);
       }
+
+      // Lightbox: attach handlers
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = lightbox.querySelector('.lightbox-img');
+      const lbCaption = lightbox.querySelector('.lightbox-caption');
+      const lbClose = lightbox.querySelector('.lightbox-close');
+
+      function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCaption.textContent = alt || '';
+        lightbox.setAttribute('aria-hidden', 'false');
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightbox.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+      document.querySelectorAll('.portfolio-item img').forEach(img => {
+        img.addEventListener('click', () => openLightbox(img.getAttribute('src'), img.getAttribute('alt')));
+      });
+      document.querySelectorAll('.view-link').forEach(a => {
+        a.addEventListener('click', (e) => { e.preventDefault(); openLightbox(a.dataset.full, a.closest('.portfolio-item').querySelector('img').alt); });
+      });
     });
   </script>
 </body>
