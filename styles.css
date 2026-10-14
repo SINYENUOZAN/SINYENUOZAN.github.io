@@ -1,132 +1,67 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LiRan · 个人主页</title>
-  <meta name="description" content="LiRan 的个人主页与作品集，记录创作、设计和生活。" />
-  <meta property="og:title" content="LiRan · 个人主页" />
-  <meta property="og:description" content="LiRan 的个人主页与作品集" />
-  <meta property="og:image" content="/preview.jpg" />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="/preview.jpg" />
-  <link rel="stylesheet" href="/styles.css" />
-</head>
-<body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="brand-wrap">
-        <img class="avatar" src="/preview.jpg" alt="LiRan" width="72" height="72" />
-        <div>
-          <p class="eyebrow">个人主页</p>
-          <h1>LiRan</h1>
-        </div>
-      </div>
+/* Main stylesheet for LiRan personal site — polished styles */
 
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#home">首页</a>
-        <a href="#about">关于</a>
-        <a href="#projects">作品</a>
-        <a href="#contact">联系</a>
-      </nav>
-    </header>
+* {
+  box-sizing: border-box;
+}
 
-    <main id="home" class="container">
-      <section class="hero card">
-        <div class="hero-copy">
-          <p class="label">Hello, world</p>
-          <h2>你好，我是 LiRan</h2>
-          <p>
-            我喜欢创作、记录生活，并把灵感转化成视觉作品、设计稿和数字内容。
-            这里用来展示我的作品、想法和联系信息。
-          </p>
-          <div class="actions">
-            <a class="primary" href="#projects">查看作品</a>
-            <a class="secondary" href="mailto:1539414231@QQ.com">联系我</a>
-          </div>
-        </div>
-        <div class="hero-art">
-          <img src="/preview.jpg" alt="LiRan artwork" loading="eager" />
-        </div>
-      </section>
+:root {
+  --bg: #07111f;
+  --bg-2: #0f172a;
+  --surface: rgba(255,255,255,0.04);
+  --card: rgba(15, 23, 42, 0.72);
+  --border: rgba(148, 163, 184, 0.10);
+  --text: #e6eef9;
+  --muted: #bfcfe0;
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --shadow: rgba(0, 0, 0, 0.28);
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
-      <section id="about" class="info-grid">
-        <article class="card">
-          <p class="label">关于我</p>
-          <h3>创意与生活的记录者</h3>
-          <p>
-            我关注图像、交互与表达，喜欢把生活中的细节转化成作品和故事。
-            这个主页是我的个人展示空间，也希望它能让更多人看到我的作品与想法。
-          </p>
-        </article>
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg), var(--bg-2));
+  font-family: var(--font-family);
+}
 
-        <article class="card">
-          <p class="label">兴趣方向</p>
-          <h3>设计 · 视觉 · AI</h3>
-          <p>
-            视觉设计、创意表达、图像生成、网页设计与创意实验是我不断探索的方向。
-          </p>
-        </article>
+img { max-width: 100%; display: block; }
 
-        <article class="card">
-          <p class="label">当前状态</p>
-          <h3>持续创作中</h3>
-          <p>
-            我正在整理作品、探索新的表达方式，并用这个主页记录我成长的每一步。
-          </p>
-        </article>
-      </section>
+.page-shell { width: min(1100px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 48px; }
+.site-header { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:12px; padding:18px 20px; border:1px solid var(--border); border-radius:18px; background: rgba(255,255,255,0.02); backdrop-filter: blur(8px); box-shadow: 0 12px 35px var(--shadow); }
+.brand-wrap { display:flex; align-items:center; gap:14px; }
+.avatar { width:72px; height:72px; object-fit:cover; border-radius:14px; border:1px solid rgba(255,255,255,0.12); box-shadow: 0 10px 24px rgba(0,0,0,0.24); }
+.eyebrow, .label { margin:0; text-transform:uppercase; letter-spacing:0.12em; font-size:0.72rem; color:var(--accent-2); }
+.subtitle { margin:4px 0 0 0; color:var(--muted); font-size:0.95rem; }
+.nav { display:flex; gap:10px; }
+.nav a { padding:8px 12px; border-radius:999px; text-decoration:none; color:var(--muted); border:1px solid transparent; }
+.nav a:hover { color:var(--text); background: rgba(148,163,184,0.04); border-color:var(--border); }
+.container { margin-top:30px; }
+.card { background: var(--card); border:1px solid var(--border); border-radius:24px; box-shadow: 0 18px 35px rgba(0,0,0,0.14); }
+.hero { display:grid; grid-template-columns: 1.2fr 0.8fr; gap:24px; align-items:center; padding:28px; }
+.hero-copy h2 { margin:10px 0 12px; font-size: clamp(1.6rem,2.8vw,2.8rem); }
+.hero-copy p { color:var(--muted); max-width:60ch; }
+.actions { display:flex; gap:12px; margin-top:18px; }
+.actions a { padding:12px 18px; border-radius:12px; text-decoration:none; }
+.actions .primary { background: linear-gradient(135deg,var(--accent),var(--accent-2)); color:white; box-shadow:0 15px 30px rgba(139,92,246,0.18); }
+.actions .secondary { background: rgba(148,163,184,0.06); border:1px solid var(--border); color:var(--text); }
+.hero-art img { width:100%; height:100%; min-height:220px; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,0.06); }
+.info-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:24px; margin-top:30px; }
+.info-grid .card { padding:22px 20px; }
+.section-head { margin-bottom:16px; }
+.project-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:22px; }
+.project-card { border-radius:18px; overflow:hidden; }
+.project-card img { width:100%; height:200px; object-fit:cover; }
+.project-meta { padding:18px; }
+.contact-card { margin-top:36px; padding:22px; }
+.contact-list { list-style:none; padding:0; margin:16px 0 0; display:grid; gap:10px; }
+.contact-list a { color:#dbeafe; text-decoration:none; }
+.site-footer { text-align:center; color:var(--muted); padding:26px 0 8px; }
 
-      <section id="projects" class="projects">
-        <div class="section-head">
-          <p class="label">作品集</p>
-          <h3>精选内容</h3>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card">
-            <img src="/preview.jpg" alt="游戏截图作品" loading="lazy" />
-            <div class="project-meta">
-              <h4>游戏截图</h4>
-              <p>精选游戏风格作品与视觉体验。</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="/preview.jpg" alt="生活照作品" loading="lazy" />
-            <div class="project-meta">
-              <h4>生活照</h4>
-              <p>记录日常中的真实瞬间与感受。</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="/preview.jpg" alt="AI 作品" loading="lazy" />
-            <div class="project-meta">
-              <h4>AI 作品</h4>
-              <p>关于生成式创作与视觉实验的探索。</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="contact" class="card contact-card">
-        <p class="label">联系</p>
-        <h3>Let's connect</h3>
-        <ul class="contact-list">
-          <li><strong>Email:</strong> <a href="mailto:1539414231@QQ.com">1539414231@QQ.com</a></li>
-          <li><strong>GitHub:</strong> <a href="https://github.com/SINYENUOZAN" target="_blank" rel="noreferrer">@SINYENUOZAN</a></li>
-        </ul>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© <span id="year"></span> LiRan</p>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+@media (max-width: 820px) {
+  .site-header { flex-direction:column; align-items:flex-start; }
+  .hero, .info-grid, .project-grid { grid-template-columns: 1fr; }
+  .nav { width:100%; }
+}

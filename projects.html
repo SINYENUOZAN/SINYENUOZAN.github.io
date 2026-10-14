@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>关于 · LiRan</title>
-  <meta name="description" content="关于 LiRan" />
+  <title>作品 · LiRan</title>
+  <meta name="description" content="LiRan 的作品集" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
       <div class="brand-wrap">
         <img class="avatar" src="/preview.jpg" alt="LiRan" width="72" height="72" />
         <div>
-          <p class="eyebrow">About</p>
+          <p class="eyebrow">Projects</p>
           <h1>LiRan</h1>
         </div>
       </div>
@@ -26,17 +26,44 @@
     </header>
 
     <main class="container">
-      <section class="card" style="padding: 28px;">
-        <p class="label">About Me</p>
-        <h2>一个在创作中成长的人</h2>
-        <p>
-          我一直在尝试把灵感、设计和情绪变成可被看见的东西。这个主页记录我的作品、想法和作品集，也让更多人了解我正在做的事。
-        </p>
-        <p>
-          我关注图像表达、创意设计、网页体验与生活中的细节。对我来说，创作不是单一的输出，而是一种观察世界、理解世界的方式。
-        </p>
+      <section class="projects">
+        <div class="section-head">
+          <p class="label">作品集</p>
+          <h3>精选项目</h3>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="/preview.jpg" alt="游戏截图作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>游戏截图</h4>
+              <p>示例占位项目 — 替换为你的实际项目与描述。</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="/preview.jpg" alt="生活照作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>生活照</h4>
+              <p>示例占位项目 — 替换为你的实际项目与描述。</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="/preview.jpg" alt="AI 作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>AI 实验</h4>
+              <p>示例占位项目 — 替换为你的实际项目与描述。</p>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> LiRan</p>
+    </footer>
   </div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

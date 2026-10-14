@@ -2,183 +2,130 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LI - 个人主页</title>
-  <meta name="description" content="个人主页，展示简介、项目和联系方式。" />
-  <!-- Open Graph / Twitter Card -->
-  <meta property="og:title" content="LI - 个人主页" />
-  <meta property="og:description" content="展示简介、作品与联系方式。" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiRan · 个人主页</title>
+  <meta name="description" content="LiRan 的个人主页与作品集 — 视觉创作、项目与联系信息。" />
+  <meta property="og:title" content="LiRan · 个人主页" />
+  <meta property="og:description" content="LiRan 的个人主页与作品集" />
   <meta property="og:image" content="/preview.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/preview.jpg" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div class="bg-overlay"></div>
-
-  <header class="site-header">
-    <nav class="top-nav" aria-label="主导航">
-      <a href="#">首页</a>
-      <a href="#projects">作品</a>
-      <a href="#contact">联系</a>
-    </nav>
-
-    <div class="brand">
-      <img class="avatar" src="preview.jpg" alt="头像" width="72" height="72">
-      <div>
-        <h1 id="your-name">LI</h1>
-        <p class="subtitle">职业 · 爱好 · 简短介绍</p>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-wrap">
+        <img class="avatar" src="/preview.jpg" alt="LiRan" width="72" height="72" />
+        <div>
+          <p class="eyebrow">个人主页</p>
+          <h1>LiRan</h1>
+          <p class="subtitle">视觉创作 · 设计 · AI 实验</p>
+        </div>
       </div>
-    </div>
 
-    <div class="bg-controls">
-      <input id="bg-file" type="file" accept="image/*" style="display:none">
-      <button id="btn-upload">上传背景</button>
-      <input id="bg-url" type="url" placeholder="输入图片 URL 并回车" title="输入图片 URL 并按回车" />
-      <button id="btn-reset">重置背景</button>
-    </div>
-  </header>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">首页</a>
+        <a href="/about.html">关于</a>
+        <a href="/projects.html">作品</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>你好，我是 <span id="hero-name">LI</span></h2>
-      <p>这里是一个美观的静态个人网站模板，支持自定义背景图（上传或使用 URL）。</p>
-      <p class="cta"><a href="#projects">查看作品</a></p>
-    </section>
-
-    <section id="projects" class="portfolio">
-      <h3>作品集</h3>
-      <div class="portfolio-grid">
-        <article class="portfolio-item">
-          <img src="preview.jpg" srcset="/preview.jpg 600w, /preview.jpg 1200w" sizes="(max-width:600px) 100vw, 33vw" loading="lazy" alt="游戏截图">
-          <div class="meta">
-            <h4>游戏截图</h4>
-            <p>精选游戏画面展示，包含高光时刻与视觉效果演示。</p>
-            <a href="preview.jpg" class="view-link" data-full="/preview.jpg" aria-label="查看 游戏截图">查看详情</a>
+    <main id="home" class="container">
+      <section class="hero card">
+        <div class="hero-copy">
+          <p class="label">Hello</p>
+          <h2>你好，我是 <strong>LiRan</strong></h2>
+          <p>
+            我专注于视觉创作与实验性项目，喜爱把生活、设计与技术结合成有温度的作品。这里展示我的精选项目与联系方式。
+          </p>
+          <div class="actions">
+            <a class="primary" href="/projects.html">查看作品</a>
+            <a class="secondary" href="mailto:1539414231@QQ.com">发邮件</a>
           </div>
+        </div>
+        <div class="hero-art">
+          <img src="/preview.jpg" alt="LiRan artwork" loading="eager" />
+        </div>
+      </section>
+
+      <section id="about" class="info-grid">
+        <article class="card">
+          <p class="label">关于我</p>
+          <h3>创作 · 视觉 · 实验</h3>
+          <p>
+            我把日常观察和技术手段结合，用图像与界面讲故事。欢迎联系我讨论合作或交流创作想法。
+          </p>
         </article>
 
-        <article class="portfolio-item">
-          <img src="preview.jpg" srcset="/preview.jpg 600w, /preview.jpg 1200w" sizes="(max-width:600px) 100vw, 33vw" loading="lazy" alt="生活照">
-          <div class="meta">
-            <h4>生活照</h4>
-            <p>个人生活与旅行片段的精选摄影，记录真实瞬间。</p>
-            <a href="preview.jpg" class="view-link" data-full="/preview.jpg" aria-label="查看 生活照">查看详情</a>
-          </div>
+        <article class="card">
+          <p class="label">技能</p>
+          <h3>图像处理 · 网页设计 · AI</h3>
+          <p>
+            熟悉图像后期、前端页面实现与生成式 AI 的工作流程，能够把想法快速转化为可展示的作品。
+          </p>
         </article>
 
-        <article class="portfolio-item">
-          <img src="preview.jpg" srcset="/preview.jpg 600w, /preview.jpg 1200w" sizes="(max-width:600px) 100vw, 33vw" loading="lazy" alt="AI作品">
-          <div class="meta">
-            <h4>AI作品</h4>
-            <p>基于 AI 的创意实验与生成作品，包含图像与文本示例。</p>
-            <a href="preview.jpg" class="view-link" data-full="/preview.jpg" aria-label="查看 AI作品">查看详情</a>
-          </div>
+        <article class="card">
+          <p class="label">兴趣</p>
+          <h3>摄影 · 游戏 · 交互</h3>
+          <p>
+            喜欢用相机记录生活，也热爱游戏与交互设计，常把这些元素融进我的项目里。
+          </p>
         </article>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="contact">
-      <h3>联系我</h3>
-      <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
-      <p>GitHub：<a href="https://github.com/SINYENUOZAN">@SINYENUOZAN</a></p>
-    </section>
-  </main>
+      <section id="projects" class="projects">
+        <div class="section-head">
+          <p class="label">作品集</p>
+          <h3>精选项目</h3>
+        </div>
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> LI · 使用 GitHub Pages 或其他静态托管部署</p>
-  </footer>
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="/preview.jpg" alt="游戏截图作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>游戏截图</h4>
+              <p>游戏场景与视觉稿的整理与展示（占位）。</p>
+            </div>
+          </article>
 
-  <!-- Lightbox modal -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-    <button class="lightbox-close" aria-label="关闭">×</button>
-    <img class="lightbox-img" alt="" src="" />
-    <p class="lightbox-caption"></p>
+          <article class="project-card">
+            <img src="/preview.jpg" alt="生活照作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>生活照</h4>
+              <p>旅行与生活的影像记录（占位）。</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="/preview.jpg" alt="AI 作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>AI 实验</h4>
+              <p>基于生成模型的视觉实验合集（占位）。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="card contact-card">
+        <p class="label">联系</p>
+        <h3>随时联系</h3>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:1539414231@QQ.com">1539414231@QQ.com</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/SINYENUOZAN" target="_blank" rel="noreferrer">@SINYENUOZAN</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> LiRan · Built with GitHub Pages</p>
+    </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const fileInput = document.getElementById('bg-file');
-    const btnUpload = document.getElementById('btn-upload');
-    const bgUrlInput = document.getElementById('bg-url');
-    const btnReset = document.getElementById('btn-reset');
-    const LS_KEY = 'site_bg_dataurl';
-
-    function setBgFromDataUrl(dataUrl) {
-      document.documentElement.style.setProperty('--bg-url', `url("${dataUrl}")`);
-      try { localStorage.setItem(LS_KEY, dataUrl); } catch (e) {}
-    }
-
-    function setBgFromUrl(url) {
-      document.documentElement.style.setProperty('--bg-url', `url("${url}")`);
-      try { localStorage.setItem(LS_KEY, url); } catch (e) {}
-    }
-
-    function resetBg() {
-      document.documentElement.style.setProperty('--bg-url', 'var(--bg-default)');
-      try { localStorage.removeItem(LS_KEY); } catch (e) {}
-    }
-
-    btnUpload.addEventListener('click', () => fileInput.click());
-
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => setBgFromDataUrl(reader.result);
-      reader.readAsDataURL(file);
-    });
-
-    bgUrlInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const v = bgUrlInput.value.trim();
-        if (v) setBgFromUrl(v);
-      }
-    });
-
-    btnReset.addEventListener('click', resetBg);
-
-    window.addEventListener('load', () => {
-      const saved = localStorage.getItem(LS_KEY);
-      if (saved) {
-        if (saved.startsWith('data:')) setBgFromDataUrl(saved);
-        else setBgFromUrl(saved);
-      }
-
-      // Lightbox: attach handlers
-      const lightbox = document.getElementById('lightbox');
-      const lbImg = lightbox.querySelector('.lightbox-img');
-      const lbCaption = lightbox.querySelector('.lightbox-caption');
-      const lbClose = lightbox.querySelector('.lightbox-close');
-
-      function openLightbox(src, alt) {
-        lbImg.src = src;
-        lbImg.alt = alt || '';
-        lbCaption.textContent = alt || '';
-        lightbox.setAttribute('aria-hidden', 'false');
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeLightbox() {
-        lightbox.setAttribute('aria-hidden', 'true');
-        lightbox.classList.remove('open');
-        lbImg.src = '';
-        document.body.style.overflow = '';
-      }
-
-      lbClose.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-
-      document.querySelectorAll('.portfolio-item img').forEach(img => {
-        img.addEventListener('click', () => openLightbox(img.getAttribute('src'), img.getAttribute('alt')));
-      });
-      document.querySelectorAll('.view-link').forEach(a => {
-        a.addEventListener('click', (e) => { e.preventDefault(); openLightbox(a.dataset.full, a.closest('.portfolio-item').querySelector('img').alt); });
-      });
-    });
   </script>
 </body>
 </html>
