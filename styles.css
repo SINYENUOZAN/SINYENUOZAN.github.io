@@ -1,5 +1,6 @@
 /* Finalized stylesheet for LiRan — landing navigation + pages (text-boxes removed)
    Updated: lighten overlay and make landing background show the whole image (contain)
+   Adjustment: ensure landing page uses only the landing-shell background (no duplicate body image)
 */
 
 * { box-sizing: border-box; }
@@ -35,6 +36,13 @@ body {
   line-height: 1.7;
 }
 
+/* When body has the landing class, remove the body background image so
+   only .landing-shell background is shown (prevents double-image layering) */
+body.landing {
+  background-image: none;
+  background-color: #07111f; /* keep a dark fallback */
+}
+
 /* lighten the global darkening layer so the image is brighter */
 body::after {
   content: "";
@@ -57,10 +65,8 @@ body::after {
   background-position: center center;
   background-size: contain; /* ensure the full image is visible */
   background-attachment: scroll; /* avoid fixed issues on mobile */
+  background-color: #07111f; /* fill letterbox areas */
 }
-
-/* If you prefer the image to fill horizontally but still show entirety on tall images,
-   you can switch to 'background-size: contain' plus background-color fallback. */
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
