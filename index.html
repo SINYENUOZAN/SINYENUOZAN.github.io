@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>你的名字 - 个人主页</title>
+  <meta name="description" content="个人主页，展示简介、项目和联系方式。" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-overlay"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <img class="avatar" src="https://placehold.co/100" alt="头像">
+      <div>
+        <h1 id="your-name">你的名字</h1>
+        <p class="subtitle">职业 · 爱好 · 简短介绍</p>
+      </div>
+    </div>
+
+    <div class="bg-controls">
+      <input id="bg-file" type="file" accept="image/*" style="display:none">
+      <button id="btn-upload">上传背景</button>
+      <input id="bg-url" type="url" placeholder="输入图片 URL 并回车" title="输入图片 URL 并按回车" />
+      <button id="btn-reset">重置背景</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>你好，我是 <span id="hero-name">你的名字</span></h2>
+      <p>这里是一个美观的静态个人网站模板，支持自定义背景图（上传或使用 URL）。</p>
+      <p class="cta"><a href="#projects">查看作品</a></p>
+    </section>
+
+    <section id="projects" class="cards">
+      <article class="card">
+        <h3>项目 A</h3>
+        <p>项目简述：可以放链接、截图或仓库地址。</p>
+        <p><a href="#">查看详情</a></p>
+      </article>
+
+      <article class="card">
+        <h3>项目 B</h3>
+        <p>项目简述：描述你的作品要点。</p>
+        <p><a href="#">查看详情</a></p>
+      </article>
+
+      <article class="card">
+        <h3>项目 C</h3>
+        <p>项目简述：展示你的技能和实践经验。</p>
+        <p><a href="#">查看详情</a></p>
+      </article>
+    </section>
+
+    <section class="contact">
+      <h3>联系我</h3>
+      <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
+      <p>GitHub：<a href="https://github.com/SINYENUOZAN">@SINYENUOZAN</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> 你的名字 · 使用 GitHub Pages 或其他静态托管部署</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const fileInput = document.getElementById('bg-file');
+    const btnUpload = document.getElementById('btn-upload');
+    const bgUrlInput = document.getElementById('bg-url');
+    const btnReset = document.getElementById('btn-reset');
+    const LS_KEY = 'site_bg_dataurl';
+
+    function setBgFromDataUrl(dataUrl) {
+      document.documentElement.style.setProperty('--bg-url', `url("${dataUrl}")`);
+      try { localStorage.setItem(LS_KEY, dataUrl); } catch (e) {}
+    }
+
+    function setBgFromUrl(url) {
+      document.documentElement.style.setProperty('--bg-url', `url("${url}")`);
+      try { localStorage.setItem(LS_KEY, url); } catch (e) {}
+    }
+
+    function resetBg() {
+      document.documentElement.style.setProperty('--bg-url', 'var(--bg-default)');
+      try { localStorage.removeItem(LS_KEY); } catch (e) {}
+    }
+
+    btnUpload.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => setBgFromDataUrl(reader.result);
+      reader.readAsDataURL(file);
+    });
+
+    bgUrlInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const v = bgUrlInput.value.trim();
+        if (v) setBgFromUrl(v);
+      }
+    });
+
+    btnReset.addEventListener('click', resetBg);
+
+    window.addEventListener('load', () => {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        if (saved.startsWith('data:')) setBgFromDataUrl(saved);
+        else setBgFromUrl(saved);
+      }
+    });
+  </script>
+</body>
+</html>
