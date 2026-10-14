@@ -21,6 +21,12 @@
           <p class="subtitle">视觉创作 · 设计 · AI 实验</p>
         </div>
       </div>
+
+      <!-- Minimal search: site-scoped Google search; very small and unobtrusive -->
+      <form class="simple-search" onsubmit="return doSearch(event)" style="margin-left:12px;">
+        <input id="s" type="search" placeholder="Search" aria-label="Search" style="padding:6px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:inherit;">
+      </form>
+
       <nav class="top-links">
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
@@ -49,6 +55,15 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    function doSearch(e){
+      if(e) e.preventDefault();
+      var q = document.getElementById('s').value.trim();
+      if(!q) return false;
+      var host = window.location.hostname;
+      var url = 'https://www.google.com/search?q=' + encodeURIComponent('site:' + host + ' ' + q);
+      window.open(url, '_blank');
+      return false;
+    }
   </script>
 </body>
 </html>
