@@ -1,6 +1,5 @@
-/* Finalized stylesheet for LiRan — landing navigation + pages (text-boxes removed)
-   Updated: lighten overlay and make landing background show the whole image (contain)
-   Adjustment: ensure landing page uses only the landing-shell background (no duplicate body image)
+/* Finalized stylesheet for LiRan — landing navigation + pages (final polish)
+   Updated: use cover for landing background to ensure no empty sides, tune overlay and focal point
 */
 
 * { box-sizing: border-box; }
@@ -17,13 +16,14 @@
   font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+html, body { height: 100%; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   min-height: 100vh;
   color: var(--text);
   background-color: #07111f;
-  /* keep a fallback full-cover background for non-landing pages */
+  /* fallback background for non-landing pages */
   background-image:
     linear-gradient(180deg, rgba(7, 17, 31, 0.18), rgba(7, 17, 31, 0.48)),
     url('/preview.jpg');
@@ -43,29 +43,34 @@ body.landing {
   background-color: #07111f; /* keep a dark fallback */
 }
 
-/* lighten the global darkening layer so the image is brighter */
+/* tuned darkening layer: slightly stronger on edges but still bright overall */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(6, 8, 12, 0.12); /* was 0.32; reduced to make image lighter */
+  background: rgba(6, 8, 12, 0.14); /* small increase for legibility */
   pointer-events: none;
   mix-blend-mode: multiply;
 }
 
-/* Landing-specific background: show the whole image (contain) without cropping */
+/* Landing-specific background: fill the viewport without leaving empty sides */
 .landing-shell {
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* place the landing background on the shell so it can use contain */
+  /* ensure the image covers the whole viewport (may crop edges) */
   background-image: url('/preview.jpg');
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain; /* ensure the full image is visible */
-  background-attachment: scroll; /* avoid fixed issues on mobile */
-  background-color: #07111f; /* fill letterbox areas */
+  background-position: center center;  /* focal point center - adjust if you want top/left */
+  background-size: cover;              /* change from contain -> cover to avoid letterbox */
+  background-attachment: fixed;        /* desktop parallax; disabled on mobile via media query */
+  background-color: #07111f; /* fill any gaps while image loads */
+}
+
+/* High-res fallback if you provide @2x image (optional): use media query to swap */
+@media (min-width: 1600px) {
+  .landing-shell { background-image: url('/preview@2x.jpg'); }
 }
 
 img { max-width: 100%; display: block; }
