@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>你的名字 - 个人主页</title>
+  <title>LI - 个人主页</title>
   <meta name="description" content="个人主页，展示简介、项目和联系方式。" />
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,10 +11,16 @@
   <div class="bg-overlay"></div>
 
   <header class="site-header">
+    <nav class="top-nav" aria-label="主导航">
+      <a href="#">首页</a>
+      <a href="#projects">作品</a>
+      <a href="#contact">联系</a>
+    </nav>
+
     <div class="brand">
       <img class="avatar" src="https://placehold.co/100" alt="头像">
       <div>
-        <h1 id="your-name">你的名字</h1>
+        <h1 id="your-name">LI</h1>
         <p class="subtitle">职业 · 爱好 · 简短介绍</p>
       </div>
     </div>
@@ -29,7 +35,7 @@
 
   <main class="container">
     <section class="hero">
-      <h2>你好，我是 <span id="hero-name">你的名字</span></h2>
+      <h2>你好，我是 <span id="hero-name">LI</span></h2>
       <p>这里是一个美观的静态个人网站模板，支持自定义背景图（上传或使用 URL）。</p>
       <p class="cta"><a href="#projects">查看作品</a></p>
     </section>
@@ -54,7 +60,7 @@
       </article>
     </section>
 
-    <section class="contact">
+    <section id="contact" class="contact">
       <h3>联系我</h3>
       <p>邮箱：<a href="mailto:you@example.com">you@example.com</a></p>
       <p>GitHub：<a href="https://github.com/SINYENUOZAN">@SINYENUOZAN</a></p>
@@ -62,7 +68,7 @@
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> 你的名字 · 使用 GitHub Pages 或其他静态托管部署</p>
+    <p>© <span id="year"></span> LI · 使用 GitHub Pages 或其他静态托管部署</p>
   </footer>
 
   <script>
