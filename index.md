@@ -3,7 +3,7 @@ layout: splash
 title: "LI"
 header:
   overlay_color: "#000"
-  overlay_filter: "0.5"
+  overlay_filter: "0.4"
   overlay_image: /preview.jpg
 excerpt: "个人网站与作品集"
 intro:
@@ -28,7 +28,7 @@ feature_row:
 
 ## 关于我
 
-这是一个个人网站模板，后续我会在这里更新我的作品、经历和创作内容。
+这是我的个人网站，后续会用来展示作品、经历和创作内容。现在先保留简洁的展示页，便于以后按自己的需求继续扩展。
 
 ## 联系方式
 

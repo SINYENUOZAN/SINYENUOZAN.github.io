@@ -1,0 +1,73 @@
+# _config.yml
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "dark"
+search: true
+
+# Site settings
+title: "LI"
+subtitle: "个人网站 & 作品集"
+name: "LI"
+description: >-
+  个人网站与作品集，记录我的作品、生活和创作。
+url: "https://SINYENUOZAN.github.io"
+baseurl: ""
+repository: "SINYENUOZAN/SINYENUOZAN.github.io"
+
+# Markdown and output
+markdown: kramdown
+permalink: /:categories/:title/
+
+# Author info
+author:
+  name: "LI"
+  avatar: "/preview.jpg"
+  bio: "个人网站与作品集"
+  location: "China"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/SINYENUOZAN"
+    - label: "Email"
+      icon: "fas fa-envelope"
+      url: "mailto:you@example.com"
+
+# Plugins
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "single"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "single"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "single"
+      read_time: false
+      comments: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
