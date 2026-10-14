@@ -10,6 +10,18 @@
   <meta property="og:image" content="/preview.jpg" />
   <link rel="icon" href="/preview.jpg" />
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/assets/css/custom-background.css" />
+  <style>
+    /* ensure background is present even if other styles override */
+    body.landing, html {
+      background-image: url('/preview.jpg') !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      min-height: 100vh !important;
+    }
+    .landing-shell { background: transparent !important; }
+  </style>
 </head>
 <body class="landing">
   <div class="landing-shell">
