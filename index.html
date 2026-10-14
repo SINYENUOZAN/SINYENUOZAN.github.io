@@ -3,124 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LiRan · 个人主页</title>
-  <meta name="description" content="LiRan 的个人主页与作品集 — 视觉创作、项目与联系信息。" />
-  <meta property="og:title" content="LiRan · 个人主页" />
-  <meta property="og:description" content="LiRan 的个人主页与作品集" />
+  <title>LiRan — Welcome</title>
+  <meta name="description" content="LiRan 的个人主页 — 视觉作品与联系" />
+  <meta property="og:title" content="LiRan — Welcome" />
+  <meta property="og:description" content="LiRan 的个人主页 — 视觉作品与联系" />
   <meta property="og:image" content="/preview.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/preview.jpg" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="brand-wrap">
-        <img class="avatar" src="/preview.jpg" alt="LiRan" width="72" height="72" />
-        <div>
-          <p class="eyebrow">个人主页</p>
+  <div class="landing-shell">
+    <header class="landing-header">
+      <div class="brand">
+        <img class="avatar" src="/preview.jpg" alt="LiRan" width="56" height="56" />
+        <div class="brand-text">
           <h1>LiRan</h1>
           <p class="subtitle">视觉创作 · 设计 · AI 实验</p>
         </div>
       </div>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="/">首页</a>
-        <a href="/about.html">关于</a>
-        <a href="/projects.html">作品</a>
-        <a href="#contact">联系</a>
+      <nav class="top-links">
+        <a href="/about.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/contact.html">Contact</a>
       </nav>
     </header>
 
-    <main id="home" class="container">
-      <section class="hero card">
-        <div class="hero-copy">
-          <p class="label">Hello</p>
-          <h2>你好，我是 <strong>LiRan</strong></h2>
-          <p>
-            我专注于视觉创作与实验性项目，喜爱把生活、设计与技术结合成有温度的作品。这里展示我的精选项目与联系方式。
-          </p>
-          <div class="actions">
-            <a class="primary" href="/projects.html">查看作品</a>
-            <a class="secondary" href="mailto:1539414231@QQ.com">发邮件</a>
-          </div>
-        </div>
-        <div class="hero-art">
-          <img src="/preview.jpg" alt="LiRan artwork" loading="eager" />
-        </div>
-      </section>
+    <main class="landing-hero">
+      <div class="hero-inner">
+        <h2 class="hero-title">你好，我是 <strong>LiRan</strong></h2>
+        <p class="hero-sub">视觉创作与实验 — 点击下面进入作品或联系我</p>
 
-      <section id="about" class="info-grid">
-        <article class="card">
-          <p class="label">关于我</p>
-          <h3>创作 · 视觉 · 实验</h3>
-          <p>
-            我把日常观察和技术手段结合，用图像与界面讲故事。欢迎联系我讨论合作或交流创作想法。
-          </p>
-        </article>
-
-        <article class="card">
-          <p class="label">技能</p>
-          <h3>图像处理 · 网页设计 · AI</h3>
-          <p>
-            熟悉图像后期、前端页面实现与生成式 AI 的工作流程，能够把想法快速转化为可展示的作品。
-          </p>
-        </article>
-
-        <article class="card">
-          <p class="label">兴趣</p>
-          <h3>摄影 · 游戏 · 交互</h3>
-          <p>
-            喜欢用相机记录生活，也热爱游戏与交互设计，常把这些元素融进我的项目里。
-          </p>
-        </article>
-      </section>
-
-      <section id="projects" class="projects">
-        <div class="section-head">
-          <p class="label">作品集</p>
-          <h3>精选项目</h3>
+        <div class="nav-cta">
+          <a class="cta cta-primary" href="/projects.html">查看作品</a>
+          <a class="cta cta-secondary" href="/about.html">关于我</a>
+          <a class="cta cta-tertiary" href="/contact.html">联系我</a>
         </div>
 
-        <div class="project-grid">
-          <article class="project-card">
-            <img src="/preview.jpg" alt="游戏截图作品" loading="lazy" />
-            <div class="project-meta">
-              <h4>游戏截图</h4>
-              <p>游戏场景与视觉稿的整理与展示（占位）。</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="/preview.jpg" alt="生活照作品" loading="lazy" />
-            <div class="project-meta">
-              <h4>生活照</h4>
-              <p>旅行与生活的影像记录（占位）。</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="/preview.jpg" alt="AI 作品" loading="lazy" />
-            <div class="project-meta">
-              <h4>AI 实验</h4>
-              <p>基于生成模型的视觉实验合集（占位）。</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="contact" class="card contact-card">
-        <p class="label">联系</p>
-        <h3>随时联系</h3>
-        <ul class="contact-list">
-          <li><strong>Email:</strong> <a href="mailto:1539414231@QQ.com">1539414231@QQ.com</a></li>
-          <li><strong>GitHub:</strong> <a href="https://github.com/SINYENUOZAN" target="_blank" rel="noreferrer">@SINYENUOZAN</a></li>
-        </ul>
-      </section>
+        <p class="hint">提示：可使用键盘 ← → 在作品页之间切换（可选）</p>
+      </div>
     </main>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> LiRan · Built with GitHub Pages</p>
+    <footer class="landing-footer">
+      <p>© <span id="year"></span> LiRan — Built with GitHub Pages</p>
     </footer>
   </div>
 
