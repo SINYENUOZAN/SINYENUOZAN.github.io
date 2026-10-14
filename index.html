@@ -11,6 +11,19 @@
   <link rel="icon" href="/preview.jpg" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/assets/css/custom-background.css" />
+  <style>
+    /* 强制覆盖可能的其他背景规则，确保 preview.jpg 作为全屏背景 */
+    body.landing, html {
+      background-image: url('/preview.jpg') !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      background-color: transparent !important;
+      min-height: 100vh !important;
+    }
+
+    .landing-shell { background: transparent !important; }
+  </style>
 </head>
 <body class="landing">
   <div class="landing-shell">
