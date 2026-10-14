@@ -1,6 +1,6 @@
 :root {
   --bg-default: linear-gradient(135deg, rgba(16, 18, 35, 0.35), rgba(64, 41, 88, 0.42)),
-    url("https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder");
+    url("/preview.jpg");
   --bg-url: var(--bg-default);
   --accent: #7c4dff;
   --accent-2: #5aa3ff;
