@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>cjhan — Welcome</title>
-  <meta name="description" content="cjhan 的个人主页 — 视觉作品与联系" />
-  <meta property="og:title" content="cjhan — Welcome" />
-  <meta property="og:description" content="cjhan 的个人主页 — 视觉作品与联系" />
+  <title>LiRan — Welcome</title>
+  <meta name="description" content="LiRan 的个人主页 — 视觉作品与联系" />
+  <meta property="og:title" content="LiRan — Welcome" />
+  <meta property="og:description" content="LiRan 的个人主页 — 视觉作品与联系" />
   <meta property="og:image" content="/preview.jpg" />
   <link rel="icon" href="/preview.jpg" />
   <link rel="stylesheet" href="/styles.css" />
@@ -18,9 +18,10 @@
       background-size: cover !important;
       background-position: center center !important;
       background-repeat: no-repeat !important;
-      min-height: 100vh !important;
       background-color: transparent !important;
+      min-height: 100vh !important;
     }
+
     .landing-shell { background: transparent !important; }
   </style>
 </head>
@@ -28,17 +29,12 @@
   <div class="landing-shell">
     <header class="landing-header">
       <div class="brand">
-        <img class="avatar" src="/preview.jpg" alt="cjhan" width="56" height="56" />
+        <img class="avatar" src="/preview.jpg" alt="LiRan" width="56" height="56" />
         <div class="brand-text">
-          <h1>cjhan</h1>
+          <h1>LiRan</h1>
           <p class="subtitle">视觉创作 · 设计 · AI 实验</p>
         </div>
       </div>
-
-      <form class="simple-search" onsubmit="return doSearch(event)" style="margin-left:12px;">
-        <input id="s" type="search" placeholder="Search" aria-label="Search" style="padding:6px 8px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:inherit;">
-      </form>
-
       <nav class="top-links">
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
@@ -48,7 +44,7 @@
 
     <main class="landing-hero">
       <div class="hero-inner">
-        <h2 class="hero-title">你好，我是 <strong>cjhan</strong>，是也够！</h2>
+        <h2 class="hero-title">你好，我是 <strong>LiRan</strong></h2>
         <p class="hero-sub">视觉创作与实验 — 点击下面进入作品或联系我</p>
 
         <div class="nav-cta">
@@ -56,25 +52,17 @@
           <a class="cta cta-secondary" href="/about.html">关于我</a>
           <a class="cta cta-tertiary" href="/contact.html">联系我</a>
         </div>
+
       </div>
     </main>
 
     <footer class="landing-footer">
-      <p>© <span id="year"></span> cjhan — Built with GitHub Pages</p>
+      <p>© <span id="year"></span> LiRan — Built with GitHub Pages</p>
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    function doSearch(e){
-      if(e) e.preventDefault();
-      var q = document.getElementById('s').value.trim();
-      if(!q) return false;
-      var host = window.location.hostname;
-      var url = 'https://www.google.com/search?q=' + encodeURIComponent('site:' + host + ' ' + q);
-      window.open(url, '_blank');
-      return false;
-    }
   </script>
 </body>
 </html>
