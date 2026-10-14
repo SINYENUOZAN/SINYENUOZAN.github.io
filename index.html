@@ -11,76 +11,6 @@
   <link rel="icon" href="/preview.jpg" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/assets/css/custom-background.css" />
-  <style>
-    /* 强制覆盖可能的其他背景规则，确保 preview.jpg 作为全屏背景 */
-    body.landing, html {
-      background-image: url('/preview.jpg') !important;
-      background-size: cover !important;
-      background-position: center center !important;
-      background-repeat: no-repeat !important;
-      background-color: transparent !important;
-      min-height: 100vh !important;
-    }
-
-    .landing-shell { background: transparent !important; }
-
-    /* Search box (top-right) */
-    .top-controls {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 60;
-    }
-
-    .search-form {
-      display: flex;
-      align-items: center;
-      background: rgba(255,255,255,0.9);
-      border-radius: 24px;
-      padding: 6px 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    }
-
-    .search-input {
-      border: none;
-      outline: none;
-      background: transparent;
-      font-size: 14px;
-      padding: 6px 8px;
-      width: 180px;
-    }
-
-    .search-button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 6px 8px;
-      font-size: 14px;
-    }
-
-    /* Small proverb bar fixed at bottom */
-    .proverb-bar {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 8px 12px;
-      background: rgba(0,0,0,0.45);
-      color: rgba(255,255,255,0.95);
-      font-size: 13px;
-      z-index: 60;
-    }
-
-    @media (max-width: 600px) {
-      .search-input { width: 110px; }
-    }
-  </style>
 </head>
 <body class="landing">
   <div class="landing-shell">
@@ -94,17 +24,16 @@
       </div>
 
       <nav class="top-links">
+        <form class="search-form" id="navSearch" aria-label="Site search">
+          <input id="searchInput" class="search-input" type="search" placeholder="Search this site" aria-label="Search" autocomplete="off" />
+          <button class="search-button" type="submit" aria-label="Search">🔍</button>
+          <div id="searchSuggestions" class="search-suggestions" hidden></div>
+        </form>
+
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
-
-      <div class="top-controls">
-        <form class="search-form" id="searchForm" onsubmit="return onSearch(event)">
-          <input class="search-input" id="searchInput" type="search" placeholder="Search this site" aria-label="Search" />
-          <button class="search-button" type="submit">🔍</button>
-        </form>
-      </div>
     </header>
 
     <main class="landing-hero">
@@ -117,7 +46,6 @@
           <a class="cta cta-secondary" href="/about.html">关于我</a>
           <a class="cta cta-tertiary" href="/contact.html">联系我</a>
         </div>
-
       </div>
     </main>
 
@@ -128,46 +56,102 @@
 
   <div class="proverb-bar" id="proverbBar" aria-live="polite"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Search handler: redirect to a site-scoped search (uses user's search engine)
-    function onSearch(e) {
-      if (e) e.preventDefault();
-      var q = document.getElementById('searchInput').value.trim();
-      if (!q) return false;
-      // Use the current hostname to scope the search (works with GitHub Pages or custom domain)
-      var host = window.location.hostname;
-      var query = 'site:' + host + ' ' + q;
-      // Prefer user's default search engine by using navigator.share? Not available. Use Google as fallback.
-      var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-      window.open(url, '_blank');
-      return false;
-    }
+    window.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('navSearch');
+      const input = document.getElementById('searchInput');
+      const suggestions = document.getElementById('searchSuggestions');
 
-    // Random proverb list (english) — feel free to add or adjust
-    var proverbs = [
-      "The journey of a thousand miles begins with a single step.",
-      "Fortune favors the bold.",
-      "What we think, we become.",
-      "Less is more.",
-      "Simplicity is the ultimate sophistication.",
-      "Do not wish for an easy life; wish for the strength to endure a difficult one.",
-      "The only constant is change.",
-      "Well begun is half done.",
-      "The best way out is always through.",
-      "Action expresses priorities."
-    ];
+      if (form && input && suggestions) {
+        fetch('/assets/data/search-index.json')
+          .then(function (res) { return res.json(); })
+          .then(function (index) {
+            const fuse = new Fuse(index, {
+              keys: ['title', 'content'],
+              includeMatches: true,
+              threshold: 0.45,
+              minMatchCharLength: 2
+            });
 
-    function pickProverb() {
-      var i = Math.floor(Math.random() * proverbs.length);
-      return proverbs[i];
-    }
+            function renderSuggestions(items) {
+              if (!items || items.length === 0) {
+                suggestions.hidden = true;
+                suggestions.innerHTML = '';
+                return;
+              }
 
-    // Set proverb on load
-    document.addEventListener('DOMContentLoaded', function() {
-      var bar = document.getElementById('proverbBar');
-      if (bar) bar.textContent = pickProverb();
+              suggestions.hidden = false;
+              suggestions.innerHTML = '';
+              const list = document.createElement('ul');
+
+              items.slice(0, 6).forEach(function (item) {
+                const li = document.createElement('li');
+                li.innerHTML = '<div class="title">' + item.title + '</div><div class="snippet">' + (item.content ? item.content.slice(0, 90) : '') + '</div>';
+                li.addEventListener('click', function () {
+                  window.location.href = item.url;
+                });
+                list.appendChild(li);
+              });
+
+              suggestions.appendChild(list);
+            }
+
+            input.addEventListener('input', function () {
+              const q = this.value.trim();
+              if (q.length < 2) {
+                renderSuggestions([]);
+                return;
+              }
+              const results = fuse.search(q).map(function (entry) { return entry.item; });
+              renderSuggestions(results);
+            });
+
+            form.addEventListener('submit', function (event) {
+              event.preventDefault();
+              const q = input.value.trim();
+              if (!q) return;
+              const results = fuse.search(q).map(function (entry) { return entry.item; });
+              if (results.length) {
+                window.location.href = results[0].url;
+              }
+            });
+
+            document.addEventListener('click', function (event) {
+              if (!event.target.closest('.search-form') && !event.target.closest('.search-input')) {
+                suggestions.hidden = true;
+              }
+            });
+          })
+          .catch(function () {
+            suggestions.hidden = true;
+          });
+      }
+
+      const bar = document.getElementById('proverbBar');
+      if (bar) {
+        fetch('/assets/data/proverbs.json')
+          .then(function (res) { return res.json(); })
+          .then(function (proverbs) {
+            if (!proverbs || !proverbs.length) return;
+            let index = Math.floor(Math.random() * proverbs.length);
+            function update() {
+              bar.style.opacity = 0;
+              setTimeout(function () {
+                bar.textContent = proverbs[index];
+                bar.style.opacity = 1;
+              }, 180);
+            }
+            update();
+            setInterval(function () {
+              index = (index + 1) % proverbs.length;
+              update();
+            }, 12000);
+          })
+          .catch(function () {});
+      }
     });
   </script>
 </body>
