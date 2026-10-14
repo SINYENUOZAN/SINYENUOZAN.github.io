@@ -1,0 +1,16 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.landing {
+  /* 使用站点根目录下的 preview.jpg，保留图片原始亮度（不使用 filter） */
+  background-image: url('/preview.jpg');
+  background-size: cover; /* 保持图片纵横比并覆盖全屏 */
+  background-position: center center; /* 居中显示 */
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* 可选：确保主要内容在背景上可见（不改变图片亮度）；如果需要更好的可读性，可以在这里添加半透明遮罩而不改变图片本身 */
