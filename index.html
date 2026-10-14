@@ -10,7 +10,6 @@
   <meta property="og:image" content="/preview.jpg" />
   <link rel="icon" href="/preview.jpg" />
   <link rel="stylesheet" href="/styles.css" />
-  <link rel="stylesheet" href="/assets/css/custom-background.css" />
 </head>
 <body class="landing">
   <div class="landing-shell">
@@ -22,14 +21,7 @@
           <p class="subtitle">视觉创作 · 设计 · AI 实验</p>
         </div>
       </div>
-
       <nav class="top-links">
-        <form class="search-form" id="navSearch" aria-label="Site search">
-          <input id="searchInput" class="search-input" type="search" placeholder="Search this site" aria-label="Search" autocomplete="off" />
-          <button class="search-button" type="submit" aria-label="Search">🔍</button>
-          <div id="searchSuggestions" class="search-suggestions" hidden></div>
-        </form>
-
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
@@ -46,6 +38,7 @@
           <a class="cta cta-secondary" href="/about.html">关于我</a>
           <a class="cta cta-tertiary" href="/contact.html">联系我</a>
         </div>
+
       </div>
     </main>
 
@@ -54,105 +47,8 @@
     </footer>
   </div>
 
-  <div class="proverb-bar" id="proverbBar" aria-live="polite"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    window.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('navSearch');
-      const input = document.getElementById('searchInput');
-      const suggestions = document.getElementById('searchSuggestions');
-
-      if (form && input && suggestions) {
-        fetch('/assets/data/search-index.json')
-          .then(function (res) { return res.json(); })
-          .then(function (index) {
-            const fuse = new Fuse(index, {
-              keys: ['title', 'content'],
-              includeMatches: true,
-              threshold: 0.45,
-              minMatchCharLength: 2
-            });
-
-            function renderSuggestions(items) {
-              if (!items || items.length === 0) {
-                suggestions.hidden = true;
-                suggestions.innerHTML = '';
-                return;
-              }
-
-              suggestions.hidden = false;
-              suggestions.innerHTML = '';
-              const list = document.createElement('ul');
-
-              items.slice(0, 6).forEach(function (item) {
-                const li = document.createElement('li');
-                li.innerHTML = '<div class="title">' + item.title + '</div><div class="snippet">' + (item.content ? item.content.slice(0, 90) : '') + '</div>';
-                li.addEventListener('click', function () {
-                  window.location.href = item.url;
-                });
-                list.appendChild(li);
-              });
-
-              suggestions.appendChild(list);
-            }
-
-            input.addEventListener('input', function () {
-              const q = this.value.trim();
-              if (q.length < 2) {
-                renderSuggestions([]);
-                return;
-              }
-              const results = fuse.search(q).map(function (entry) { return entry.item; });
-              renderSuggestions(results);
-            });
-
-            form.addEventListener('submit', function (event) {
-              event.preventDefault();
-              const q = input.value.trim();
-              if (!q) return;
-              const results = fuse.search(q).map(function (entry) { return entry.item; });
-              if (results.length) {
-                window.location.href = results[0].url;
-              }
-            });
-
-            document.addEventListener('click', function (event) {
-              if (!event.target.closest('.search-form') && !event.target.closest('.search-input')) {
-                suggestions.hidden = true;
-              }
-            });
-          })
-          .catch(function () {
-            suggestions.hidden = true;
-          });
-      }
-
-      const bar = document.getElementById('proverbBar');
-      if (bar) {
-        fetch('/assets/data/proverbs.json')
-          .then(function (res) { return res.json(); })
-          .then(function (proverbs) {
-            if (!proverbs || !proverbs.length) return;
-            let index = Math.floor(Math.random() * proverbs.length);
-            function update() {
-              bar.style.opacity = 0;
-              setTimeout(function () {
-                bar.textContent = proverbs[index];
-                bar.style.opacity = 1;
-              }, 180);
-            }
-            update();
-            setInterval(function () {
-              index = (index + 1) % proverbs.length;
-              update();
-            }, 12000);
-          })
-          .catch(function () {});
-      }
-    });
   </script>
 </body>
 </html>
