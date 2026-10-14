@@ -23,6 +23,63 @@
     }
 
     .landing-shell { background: transparent !important; }
+
+    /* Search box (top-right) */
+    .top-controls {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 60;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 6px 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 14px;
+      padding: 6px 8px;
+      width: 180px;
+    }
+
+    .search-button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+
+    /* Small proverb bar fixed at bottom */
+    .proverb-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.45);
+      color: rgba(255,255,255,0.95);
+      font-size: 13px;
+      z-index: 60;
+    }
+
+    @media (max-width: 600px) {
+      .search-input { width: 110px; }
+    }
   </style>
 </head>
 <body class="landing">
@@ -35,11 +92,19 @@
           <p class="subtitle">视觉创作 · 设计 · AI 实验</p>
         </div>
       </div>
+
       <nav class="top-links">
         <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/contact.html">Contact</a>
       </nav>
+
+      <div class="top-controls">
+        <form class="search-form" id="searchForm" onsubmit="return onSearch(event)">
+          <input class="search-input" id="searchInput" type="search" placeholder="Search this site" aria-label="Search" />
+          <button class="search-button" type="submit">🔍</button>
+        </form>
+      </div>
     </header>
 
     <main class="landing-hero">
@@ -61,8 +126,49 @@
     </footer>
   </div>
 
+  <div class="proverb-bar" id="proverbBar" aria-live="polite"></div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Search handler: redirect to a site-scoped search (uses user's search engine)
+    function onSearch(e) {
+      if (e) e.preventDefault();
+      var q = document.getElementById('searchInput').value.trim();
+      if (!q) return false;
+      // Use the current hostname to scope the search (works with GitHub Pages or custom domain)
+      var host = window.location.hostname;
+      var query = 'site:' + host + ' ' + q;
+      // Prefer user's default search engine by using navigator.share? Not available. Use Google as fallback.
+      var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+      window.open(url, '_blank');
+      return false;
+    }
+
+    // Random proverb list (english) — feel free to add or adjust
+    var proverbs = [
+      "The journey of a thousand miles begins with a single step.",
+      "Fortune favors the bold.",
+      "What we think, we become.",
+      "Less is more.",
+      "Simplicity is the ultimate sophistication.",
+      "Do not wish for an easy life; wish for the strength to endure a difficult one.",
+      "The only constant is change.",
+      "Well begun is half done.",
+      "The best way out is always through.",
+      "Action expresses priorities."
+    ];
+
+    function pickProverb() {
+      var i = Math.floor(Math.random() * proverbs.length);
+      return proverbs[i];
+    }
+
+    // Set proverb on load
+    document.addEventListener('DOMContentLoaded', function() {
+      var bar = document.getElementById('proverbBar');
+      if (bar) bar.textContent = pickProverb();
+    });
   </script>
 </body>
 </html>
