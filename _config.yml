@@ -4,9 +4,9 @@ minimal_mistakes_skin: "dark"
 search: true
 
 # Site settings
-title: "LI"
+title: "LiRan"
 subtitle: "个人网站 & 作品集"
-name: "LI"
+name: "LiRan"
 description: >-
   个人网站与作品集，记录我的作品、生活和创作。
 url: "https://SINYENUOZAN.github.io"
@@ -19,7 +19,7 @@ permalink: /:categories/:title/
 
 # Author info
 author:
-  name: "LI"
+  name: "LiRan"
   avatar: "/preview.jpg"
   bio: "个人网站与作品集"
   location: "China"
@@ -29,7 +29,7 @@ author:
       url: "https://github.com/SINYENUOZAN"
     - label: "Email"
       icon: "fas fa-envelope"
-      url: "mailto:you@example.com"
+      url: "mailto:1539414231@QQ.com"
 
 # Plugins
 plugins:
