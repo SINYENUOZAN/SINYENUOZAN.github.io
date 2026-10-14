@@ -1,287 +1,132 @@
-:root {
-  --bg-default: linear-gradient(135deg, rgba(16, 18, 35, 0.35), rgba(64, 41, 88, 0.42)),
-    url("/preview.jpg");
-  --bg-url: var(--bg-default);
-  --accent: #7c4dff;
-  --accent-2: #5aa3ff;
-  --glass: rgba(255, 255, 255, 0.08);
-  --text: #eef2ff;
-  --muted: rgba(255, 255, 255, 0.8);
-  --shadow: rgba(0, 0, 0, 0.18);
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiRan · 个人主页</title>
+  <meta name="description" content="LiRan 的个人主页与作品集，记录创作、设计和生活。" />
+  <meta property="og:title" content="LiRan · 个人主页" />
+  <meta property="og:description" content="LiRan 的个人主页与作品集" />
+  <meta property="og:image" content="/preview.jpg" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="/preview.jpg" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-wrap">
+        <img class="avatar" src="/preview.jpg" alt="LiRan" width="72" height="72" />
+        <div>
+          <p class="eyebrow">个人主页</p>
+          <h1>LiRan</h1>
+        </div>
+      </div>
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">首页</a>
+        <a href="#about">关于</a>
+        <a href="#projects">作品</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
 
-body {
-  margin: 0;
-  min-height: 100%;
-  color: var(--text);
-  background-image: var(--bg-url);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    <main id="home" class="container">
+      <section class="hero card">
+        <div class="hero-copy">
+          <p class="label">Hello, world</p>
+          <h2>你好，我是 LiRan</h2>
+          <p>
+            我喜欢创作、记录生活，并把灵感转化成视觉作品、设计稿和数字内容。
+            这里用来展示我的作品、想法和联系信息。
+          </p>
+          <div class="actions">
+            <a class="primary" href="#projects">查看作品</a>
+            <a class="secondary" href="mailto:1539414231@QQ.com">联系我</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="/preview.jpg" alt="LiRan artwork" loading="eager" />
+        </div>
+      </section>
 
-.bg-overlay {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(6, 6, 12, 0.38), rgba(6, 6, 12, 0.62));
-  pointer-events: none;
-}
+      <section id="about" class="info-grid">
+        <article class="card">
+          <p class="label">关于我</p>
+          <h3>创意与生活的记录者</h3>
+          <p>
+            我关注图像、交互与表达，喜欢把生活中的细节转化成作品和故事。
+            这个主页是我的个人展示空间，也希望它能让更多人看到我的作品与想法。
+          </p>
+        </article>
 
-.site-header {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 24px;
-  backdrop-filter: blur(6px);
-}
+        <article class="card">
+          <p class="label">兴趣方向</p>
+          <h3>设计 · 视觉 · AI</h3>
+          <p>
+            视觉设计、创意表达、图像生成、网页设计与创意实验是我不断探索的方向。
+          </p>
+        </article>
 
-/* Centered top navigation */
-.top-nav {
-  position: absolute;
-  left: 50%;
-  top: 18px;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  font-weight: 600;
-}
-.top-nav a {
-  color: var(--text);
-  text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-}
-.top-nav a:hover {
-  background: rgba(255,255,255,0.04);
-}
+        <article class="card">
+          <p class="label">当前状态</p>
+          <h3>持续创作中</h3>
+          <p>
+            我正在整理作品、探索新的表达方式，并用这个主页记录我成长的每一步。
+          </p>
+        </article>
+      </section>
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+      <section id="projects" class="projects">
+        <div class="section-head">
+          <p class="label">作品集</p>
+          <h3>精选内容</h3>
+        </div>
 
-.avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 25px var(--shadow);
-}
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="/preview.jpg" alt="游戏截图作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>游戏截图</h4>
+              <p>精选游戏风格作品与视觉体验。</p>
+            </div>
+          </article>
 
-h1 {
-  margin: 0;
-  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
-}
+          <article class="project-card">
+            <img src="/preview.jpg" alt="生活照作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>生活照</h4>
+              <p>记录日常中的真实瞬间与感受。</p>
+            </div>
+          </article>
 
-.subtitle {
-  margin: 4px 0 0 0;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
+          <article class="project-card">
+            <img src="/preview.jpg" alt="AI 作品" loading="lazy" />
+            <div class="project-meta">
+              <h4>AI 作品</h4>
+              <p>关于生成式创作与视觉实验的探索。</p>
+            </div>
+          </article>
+        </div>
+      </section>
 
-.bg-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+      <section id="contact" class="card contact-card">
+        <p class="label">联系</p>
+        <h3>Let's connect</h3>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:1539414231@QQ.com">1539414231@QQ.com</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/SINYENUOZAN" target="_blank" rel="noreferrer">@SINYENUOZAN</a></li>
+        </ul>
+      </section>
+    </main>
 
-.bg-controls input[type="url"] {
-  width: 220px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  color: var(--text);
-  padding: 9px 12px;
-  outline: none;
-}
+    <footer class="site-footer">
+      <p>© <span id="year"></span> LiRan</p>
+    </footer>
+  </div>
 
-.bg-controls input::placeholder {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.bg-controls button {
-  border: none;
-  border-radius: 10px;
-  padding: 9px 14px;
-  cursor: pointer;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: white;
-  box-shadow: 0 10px 25px rgba(124, 77, 255, 0.26);
-}
-
-.container {
-  position: relative;
-  z-index: 2;
-  max-width: 980px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-.hero {
-  padding: 30px 28px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-}
-
-.hero h2 {
-  margin: 0 0 10px 0;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-}
-
-.hero p {
-  margin: 0 0 12px 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.cta a {
-  display: inline-block;
-  padding: 9px 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.card,
-.contact {
-  background: var(--glass);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.09);
-}
-
-.card h3,
-.contact h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.2rem;
-}
-
-.card p,
-.contact p {
-  margin: 0 0 8px 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.card a,
-.contact a {
-  color: #dfe7ff;
-  text-decoration: none;
-}
-
-.contact {
-  margin-top: 22px;
-}
-
-.site-footer {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 18px 0 34px 0;
-  color: var(--muted);
-}
-
-/* Portfolio section */
-.portfolio {
-  margin-top: 28px;
-}
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 12px;
-}
-.portfolio-item {
-  background: var(--glass);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-}
-.portfolio-item img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  display: block;
-}
-.portfolio-item .meta {
-  padding: 12px;
-}
-.portfolio-item h4 {
-  margin: 0 0 6px 0;
-  font-size: 1rem;
-}
-.portfolio-item p {
-  margin: 0 0 8px 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.portfolio-item a {
-  color: var(--text);
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 6px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.04);
-}
-
-@media (max-width: 720px) {
-  .site-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 18px 16px;
-  }
-
-  .top-nav {
-    position: static;
-    transform: none;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .bg-controls {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .bg-controls input[type="url"] {
-    width: 100%;
-  }
-
-  .container {
-    margin: 18px auto;
-    padding: 12px;
-  }
-
-  .hero {
-    padding: 20px 18px;
-  }
-}
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
