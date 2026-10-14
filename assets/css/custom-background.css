@@ -14,3 +14,69 @@ body.landing {
 }
 
 /* 可选：确保主要内容在背景上可见（不改变图片亮度）；如果需要更好的可读性，可以在这里添加半透明遮罩而不改变图片本身 */
+
+/* NAV search styles */
+.nav .search-form {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  padding: 4px 6px;
+}
+
+.nav .search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  padding: 6px 8px;
+  width: 160px;
+}
+
+.nav .search-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+/* Suggestions dropdown */
+.search-suggestions {
+  position: absolute;
+  top: 46px; /* adjust based on nav height */
+  right: 18px;
+  background: rgba(255,255,255,0.98);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  max-width: 320px;
+  z-index: 80;
+  overflow: hidden;
+}
+
+.search-suggestions ul { list-style: none; margin: 0; padding: 6px 0; }
+.search-suggestions li { padding: 8px 12px; cursor: pointer; }
+.search-suggestions li:hover, .search-suggestions li.active { background: rgba(0,0,0,0.06); }
+.search-suggestions .title { font-weight: 600; font-size: 14px; }
+.search-suggestions .snippet { font-size: 12px; color: #444; margin-top: 4px; }
+
+/* Proverb bar */
+.proverb-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.45);
+  color: rgba(255,255,255,0.95);
+  font-size: 13px;
+  z-index: 60;
+}
+
+@media (max-width: 600px) {
+  .nav .search-input { width: 110px; }
+  .search-suggestions { right: 8px; left: 8px; max-width: unset; }
+}
